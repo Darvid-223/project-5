@@ -1,0 +1,603 @@
+Predictive Analytics
+
+Data Practitioner Skills
+    Business/user
+        Identifying the business problem to be solved and top communicating the solution.
+        Vad är problemet och hur ska det lösas?
+        Tells a story based on their findnings from a large data set.
+    Analytical
+        Statistical skills and probability based analysis of large data sets.
+        Matematiska analyser av data.
+
+    Programming
+        Ability to develop and deliver a software solution 
+
+
+Data Scientist:
+    Find patters in data using statics, scientific analysis and software algoritms
+
+Data Engineer:
+    Builds and maintains the data pipeline.
+
+Data Analyst:
+    Find cleans, mines interprets and visualises the data
+
+Machine Learning Engineer:
+    Deploys the machine learning models into production.
+
+MLOps Engineer:
+    Overall responsibility for the machine learning architecture. Part developer and part operations.
+
+Machine Learning Researcher:
+    Researches the latest machine learning techniques.
+
+Data Manager:
+    Gatekeeper on data access. Has overall responsibility for the data.
+
+
+
+Vad är AI?
+    Simunaltion of human intelligence.
+    Rationell. Svårt för "What ifs".
+
+Machine learning:
+    Människor precess and label data.
+    algoritms finds patterns and outputs a model.
+    Sub-field of AI.
+        Deep learning:
+            Computer analys raw data.
+            Very powerful.
+            require more computing power.
+
+    Pattern or Trend Identification:
+        Classification:
+            Vad är det för typ?
+            delar upp i klasser.
+        CLustering:
+            gruppar ihop data.
+            customer pattern.
+        Regression:
+            trend
+
+Data Analysis:
+    Analys data to make conclusions.
+
+    Raw data:
+        eg: Web, Social media, databases, video, sensor data.
+
+    Organize & analys:
+        use of spreadsheets
+
+    Conclusions & decision making:
+        controll inputs based on outputs.
+
+
+
+    Descriptive:
+        What happend?
+    
+    Diagnostic:
+        Why it happend?
+
+    Predictive:
+        What will happen?
+
+    Prescriptive:
+        What's the plan?
+
+
+Data Science:
+
+    Collect Data- Irganize and find solutions - Communicate data driven actionable findnings
+
+
+    1. Capture - extract the data
+    2. Maintain - clean the data
+    3. Process - mine the data for useful insight
+    4. Analyse - apply statictcal analysis to the data
+    5. communicate - use data to visualisation to tell a story with the data.
+
+
+Machine learning opeartions "MLOps":
+    Design, model development, operations.
+
+
+--------------------
+Machine Learning essentials:
+
+Terminologi:
+    Label & target are synonyms
+
+    Categorical variables, Numerical variable, Date variable, Boolean Var, 
+    Label variabel are the variable you are interested in predicting. Example: "Good" is a Categorical variable.
+        Target/Label called: Answer, result, concept, ground truth or output.
+
+Supervised examples:
+Classification, Regression
+
+Unsupervised has no correct answers to be mapped.
+    CLustering: 
+    association. 
+
+1. Supervised Learning (Övervakad inlärning):
+
+   - Data: Alla träningsdata är märkta med korrekta svar (etiketter).
+   - Process: Algoritmen lär sig att förutsäga etiketter baserat på indata.
+   - Exempel: Klassificering av e-postmeddelanden som skräppost eller inte.
+   - Fördelar: Hög precision, tydliga mål.
+   - Nackdelar: Kräver mycket märkt data, vilket kan vara tidskrävande och dyrt.
+
+2. Semi-Supervised Learning (Delvis övervakad inlärning):
+
+   - Data: En liten del av träningsdata är märkt, resten är omärkt.
+   - Process: Algoritmen använder både märkta och omärkta data för att lära sig.
+   - Exempel: Bildklassificering med några märkta bilder och många omärkta.
+   - Fördelar: Kräver mindre märkt data, kan utnyttja stora mängder omärkta data.
+   - Nackdelar: Kan vara mindre exakt än fullt övervakad inlärning, mer komplex att implementera.
+
+Semi-supervised learning är särskilt användbar när märkning av data är dyr eller tidskrävande, men det finns gott om omärkta data tillgängliga.
+
+
+Unsupervised Learning (Oövervakad inlärning):
+
+1. Data:
+   - Använder endast omärkta data.
+   - Inga fördefinierade etiketter eller "rätta svar".
+
+2. Syfte:
+   - Hitta dolda mönster eller strukturer i data.
+   - Upptäcka grupperingar eller relationer som inte är uppenbara.
+
+3. Process:
+   - Algoritmen analyserar data utan vägledning.
+   - Försöker hitta naturliga grupperingar eller mönster.
+
+4. Vanliga tekniker:
+   - Klustring: Grupperar liknande datapunkter.
+   - Dimensionsreduktion: Minskar antalet variabler i data.
+   - Associationsregler: Hittar relationer mellan variabler.
+
+5. Exempel:
+   - Kundsegmentering baserat på köpbeteende.
+   - Identifiering av anomalier i transaktionsdata.
+   - Ämnesmodellering i textdokument.
+
+6. Fördelar:
+   - Kräver ingen manuell märkning av data.
+   - Kan upptäcka oväntade mönster.
+   - Användbar för explorativ dataanalys.
+
+7. Utmaningar:
+   - Svårare att utvärdera resultatens kvalitet.
+   - Kan kräva expertkunskap för att tolka resultaten.
+   - Resultaten kan vara mindre precisa än övervakad inlärning.
+
+Oövervakad inlärning är särskilt användbar när du vill utforska 
+data utan förutfattade meningar om vad du letar efter, eller när du har stora mängder 
+omärkta data och vill hitta naturliga grupperingar eller mönster.
+
+
+En ML-pipeline är en sekvens av steg som används för att bygga och driftsätta en maskininlärningsmodell. 
+Den omfattar hela processen från datainsamling till modellens driftsättning och underhåll. Här är de huvudsakliga stegen:
+
+1. Datainsamling:
+   - Samla in rådata från olika källor.
+   - Säkerställ datakvalitet och kvantitet.
+
+2. Dataförbehandling:
+   - Rengöring av data (hantera saknade värden, outliers).
+   - Formatering och normalisering.
+   - Funktionsselektion och -skapande.
+
+3. Datauppdelning:
+   - Dela upp data i tränings-, validerings- och testset.
+
+4. Modellval:
+   - Välj lämplig algoritm baserat på problemtyp och data.
+
+5. Modellträning:
+   - Träna modellen på träningsdata.
+   - Justera hyperparametrar.
+
+6. Modellutvärdering:
+   - Utvärdera modellens prestanda på valideringsdata.
+   - Finjustera modellen vid behov.
+
+7. Modelltest:
+   - Testa den slutliga modellen på testdata.
+
+8. Driftsättning:
+   - Integrera modellen i produktionsmiljön.
+
+9. Övervakning och underhåll:
+   - Övervaka modellens prestanda över tid.
+   - Uppdatera modellen vid behov.
+
+10. Återkoppling och iteration:
+    - Samla in feedback från användare/system.
+    - Iterera och förbättra modellen kontinuerligt.
+
+En väl strukturerad ML-pipeline säkerställer reproducerbarhet, skalbarhet och effektivitet i utvecklingen och driften av maskininlärningsmodeller.
+
+
+Parametrar:
+- Interna variabler i modellen som lärs från träningsdata.
+- Justeras automatiskt under träningsprocessen.
+- Exempel: vikter i ett neuralt nätverk, koefficienter i en regressionsmodell.
+- Modellen använder dessa för att göra prediktioner.
+
+Hyperparametrar:
+- Externa konfigurationer som ställs in före träningen.
+- Kontrollerar träningsprocessen och modellens struktur.
+- Justeras manuellt eller genom automatiserad optimering.
+- Exempel: inlärningshastighet, antal lager i ett neuralt nätverk, träddjup i en beslutsträdsmodell.
+- Påverkar modellens prestanda och generaliseringsförmåga.
+
+Huvudskillnad: Parametrar lärs från data, medan hyperparametrar ställs in av utvecklaren eller genom optimeringsprocesser.
+
+Training, Validation, Test
+20-30% test
+10-20% validation
+rest training
+
+Perferomance metrics:
+
+Olika sätt att mäta beroende på om output är en class eller number.
+
+    regression model:
+        R2 högre än 0.8 indicates a reasonable model Perferomance. (högre är bra)
+
+        MAE: Mean absolute error. Target unit. On avarage off by this value.
+        MSE: mean squared error. traget unit 2. Large errors will have a large impact. Very sensitive.
+        RMSE: root mean squared error. target unit. Good for comparisons.
+        R2: r squared. 0 to 1. To see how close the predicted and acutal values are matched.
+
+    true positiv, false positiv
+    ture negativ, false negative
+
+    True: modellen förutspår korrekt.
+
+Silhouete score
+    mean cluster distance.
+---
+Bias (fördom):
+Definition: Bias refererar till felaktigheter i modellen som uppstår på grund av att modellen är för enkel och inte kan fånga upp de underliggande mönstren i data.
+Konsekvens: En modell med hög bias är ofta underanpassad (underfitting), vilket betyder att den presterar dåligt både på träningsdata och på nya data.
+Exempel: En linjär modell som försöker anpassa sig till en kurvlinjär datauppsättning kommer att ha hög bias.
+Variance (varians):
+Definition: Variance refererar till modellens känslighet för variationer i träningsdata. En modell med hög variance anpassar sig för mycket till träningsdata, vilket gör den komplex och känslig för små störningar i data.
+Konsekvens: En modell med hög variance är ofta överanpassad (overfitting), vilket betyder att den presterar bra på träningsdata men dåligt på nya data.
+Exempel: En mycket komplex modell som försöker passa varje punkt i träningsdata kommer att ha hög variance.
+Bias-Variance Tradeoff:
+Det finns en balans mellan bias och variance som är viktig för att uppnå optimal modellprestanda. En bra modell bör ha låg bias och låg variance, men i praktiken måste man ofta kompromissa mellan de två.
+Mål: Att hitta en modell som balanserar bias och variance för att generalisera väl till nya, osedda data.
+Sammanfattningsvis: Bias handlar om fel på grund av förenklingar i modellen, medan variance handlar om modellens känslighet för variationer i träningsdata. Balansen mellan dessa två är avgörande för att bygga effektiva maskininlärningsmodeller.
+
+----
+Over and underfitting.
+**Overfitting** och **underfitting** är två vanliga problem inom maskininlärning som påverkar en modells förmåga att generalisera till nya, osedda data.
+
+### **Overfitting (Överanpassning):**
+- **Definition:** Overfitting inträffar när en modell blir för komplex och anpassar sig för mycket till träningsdata. Den lär sig inte bara de underliggande mönstren utan också brus och slumpmässiga variationer i data.
+- **Konsekvens:** En överanpassad modell presterar mycket bra på träningsdata (lågt träningsfel) men presterar dåligt på testdata eller nya data (högt generaliseringsfel), eftersom den inte kan generalisera bra.
+- **Exempel:** En beslutsregel som är mycket detaljerad och fångar upp varje liten variation i träningsdata kommer att överanpassa och inte fungera bra på nya data.
+
+### **Underfitting (Underanpassning):**
+- **Definition:** Underfitting inträffar när en modell är för enkel och inte kan fånga upp de underliggande mönstren i träningsdata. Modellen misslyckas med att lära sig de viktiga relationerna i data.
+- **Konsekvens:** En underanpassad modell presterar dåligt både på träningsdata och på testdata, eftersom den inte har tillräcklig kapacitet att representera data.
+- **Exempel:** En linjär modell som försöker anpassa sig till data som egentligen har en icke-linjär relation kommer att underanpassa och misslyckas med att förutsäga korrekt.
+
+### **Visualisering:**
+- **Overfitting:** Modellen följer träningsdata mycket noggrant, men har mycket fluktuationer och komplexa mönster som inte representerar de underliggande trenderna.
+- **Underfitting:** Modellen följer en mycket enkel trendlinje som missar viktiga detaljer och relationer i data.
+
+### **Lösningar:**
+- **För att undvika overfitting:**
+  - Använd regularisering (som L1- eller L2-regulärisering).
+  - Få mer träningsdata.
+  - Minska modellens komplexitet (färre parametrar eller enklare algoritm).
+  - Använd korsvalidering för att välja modell.
+
+- **För att undvika underfitting:**
+  - Använd en mer komplex modell.
+  - Öka modellens kapacitet (fler parametrar eller mer kraftfull algoritm).
+  - Träna modellen längre tid eller justera hyperparametrar.
+
+### **Sammanfattning:**
+- **Overfitting**: Modellen är för komplex och anpassar sig för mycket till träningsdata, vilket leder till dålig generalisering.
+- **Underfitting**: Modellen är för enkel och misslyckas med att lära sig viktiga mönster, vilket leder till dålig prestanda både på tränings- och testdata.
+
+Att hitta rätt balans mellan modellens komplexitet och dess förmåga att generalisera är nyckeln till att bygga en effektiv maskininlärningsmodell.
+
+-----
+Numerical, Categorical, Date, Mixed, Text, Image
+
+Categorical:
+    Ordinal, Nominal
+    ordinal har en ordning som academic qualicifation
+    nominal har no fixed order.
+
+    Cardinality:
+    längd på catergory, eg 7 på dagar i veckan.
+
+----
+
+Regression, Classification, Cluster
+    Supervised:
+        regression
+        Classification
+
+    Unsupervised:
+        Clustering
+
+
+
+1: Which of these is a subset of periodicity?
+2: Which of the techniques below is not related to pre-processing techniques used in NLP?
+3: Which of these could be described as image metadata?
+4: Which of these is a multi-class classification problem?
+5: Which of these recommender systems is a collaborative filtering system?
+6: Which of the following is a discrete variable?
+
+----
+
+Algorithm
+Här är en kort beskrivning av några av de mest vanliga algoritmerna inom maskininlärning:
+
+### 1. **Linear Regression**
+   - **Används för:** Regression
+   - **Beskrivning:** Modellen försöker hitta den linjära relationen mellan input-funktionerna och target-variabeln genom att passa en rak linje till data.
+
+### 2. **Logistic Regression**
+   - **Används för:** Klassificering
+   - **Beskrivning:** Trots namnet är det en klassificeringsalgoritm som används för att förutsäga sannolikheten för 
+   en binär outcome (0 eller 1) baserat på input-funktioner.
+
+### 3. **Decision Trees**
+   - **Används för:** Både klassificering och regression
+   - **Beskrivning:** Algoritmen delar upp data i mindre och mindre delar genom att ställa frågor baserade på input-funktioner, 
+   och bygger ett träd där varje nod representerar ett beslut.
+
+### 4. **Random Forest**
+   - **Används för:** Både klassificering och regression
+   - **Beskrivning:** En ensemblemetod som bygger flera beslutsträd och kombinerar deras resultat för att förbättra modellens
+    prestanda och minska överanpassning.
+
+### 5. **Support Vector Machines (SVM)**
+   - **Används för:** Klassificering och ibland regression
+   - **Beskrivning:** SVM försöker hitta den optimala gränsen (hyperplanet) som separerar klasserna i data med maximalt marginal.
+
+### 6. **K-Nearest Neighbors (KNN)**
+   - **Används för:** Både klassificering och regression
+   - **Beskrivning:** Algoritmen klassificerar en datapunkt baserat på de "k" närmaste grannarna i träningsdatasetet.
+
+### 7. **Naive Bayes**
+   - **Används för:** Klassificering
+   - **Beskrivning:** En probabilistisk klassificerare som bygger på Bayes sats och antar att alla funktioner
+    är oberoende av varandra (vilket ofta är en förenkling).
+
+### 8. **K-Means Clustering**
+   - **Används för:** Klustring (unsupervised learning)
+   - **Beskrivning:** Algoritmen grupperar datapunkter i "k" kluster baserat på deras likheter. Varje datapunkt tilldelas
+    det kluster med närmast medelvärde.
+
+### 9. **Gradient Boosting Machines (GBM)**
+   - **Används för:** Både klassificering och regression
+   - **Beskrivning:** En kraftfull ensemblemetod som bygger successivt på en serie av svaga lärande modeller (som beslutsträd) 
+   för att förbättra prestandan.
+
+### 10. **Neural Networks**
+   - **Används för:** Både klassificering och regression, särskilt för komplexa uppgifter
+   - **Beskrivning:** En algoritm inspirerad av hur den mänskliga hjärnan fungerar, där nätverk av noder (neuroner) bearbetar
+    input genom flera lager för att producera output.
+
+Dessa algoritmer är grundläggande verktyg i maskininlärning och används i många olika tillämpningar, beroende på vilken typ av
+ data och problem som ska lösas.
+
+
+------------------
+
+Komponenter i en ML-pipeline:
+Dataförbehandling (Data Preprocessing):
+
+Här förbereds rådata för modellträning. Det kan inkludera steg som att hantera saknade värden, normalisering av data, kategorisk kodning, och funktionsextraktion.
+Exempel: Skalning av numeriska variabler, enkodning av kategoriska variabler.
+Funktionsextraktion och urval (Feature Engineering and Selection):
+
+I detta steg skapas nya funktioner från den befintliga datan eller så väljs de mest relevanta funktionerna ut. Det kan förbättra modellens prestanda genom att fokusera på de mest informativa variablerna.
+Exempel: Skapa nya variabler, välja de mest betydelsefulla variablerna.
+Modellträning (Model Training):
+
+Modellen tränas på träningsdatan med hjälp av de förbehandlade funktionerna. I detta steg lär sig modellen att förutsäga target-variabeln baserat på input-funktionerna.
+Exempel: Träning av en beslutsträdmodell eller en logistisk regressionsmodell.
+Modellvalidering (Model Validation):
+
+Valideringsdata används för att utvärdera modellens prestanda och justera hyperparametrar. Detta steg hjälper till att förhindra överanpassning.
+Exempel: K-faldig korsvalidering för att testa modellens generaliseringsförmåga.
+Modellutvärdering (Model Evaluation):
+
+Efter träning och validering utvärderas modellen slutligen med testdatan för att få en uppskattning av hur väl modellen kommer att prestera på ny, osedd data.
+Exempel: Beräkning av precision, recall, F1-score, eller MAE beroende på problemtyp.
+Modellimplementering (Model Deployment):
+
+När modellen är tränad och utvärderad kan den implementeras i produktion för att göra förutsägelser på nya data.
+Exempel: Modellserving via en REST API eller batchprediktioner på inkommande data.
+
+--
+ML pipeline
+
+Data engineer hämtar datan
+
+Viktigt att ha rätt data och hämta den på rätt sätt
+
+Ha rätt datatyp?
+rätt range?
+mandatory inpuy?
+
+### **Feature Selection:**
+- **Definition:** Feature selection är processen att välja ut de mest relevanta funktionerna (variablerna) i en dataset som kommer att användas för att träna en maskininlärningsmodell. Målet är att förbättra modellens prestanda genom att eliminera onödiga eller orelaterade funktioner som kan leda till överanpassning och öka beräkningstiden.
+- **Fördelar:** Minskar modellens komplexitet, förbättrar generaliseringsförmågan och gör modellen mer effektiv.
+
+### **Feature Scaling:**
+- **Definition:** Feature scaling är processen att omvandla funktionernas värden till en gemensam skala, oftast inom ett intervall som 0 till 1 (normalisering) eller genom att ge varje funktion ett medelvärde på 0 och standardavvikelse 1 (standardisering). Detta är viktigt för algoritmer som är känsliga för skillnader i storleksordningen på funktioner, som k-Nearest Neighbors eller stödvektormaskiner (SVM).
+- **Fördelar:** Förbättrar modellens konvergenshastighet och hjälper algoritmer som bygger på avståndsberäkningar att fungera korrekt.
+
+### **Data Annotation:**
+- **Definition:** Data annotation är processen att märka eller tagga rådata med relevant information så att den kan användas av maskininlärningsmodeller. Detta görs för att skapa träningsdata för övervakad inlärning, där varje datapunkt får en etikett som modellen kan lära sig från.
+  
+- **Syfte:** Att ge struktur och mening åt ostrukturerad data (som text, bilder, ljud eller video) så att den blir användbar för maskininlärningsalgoritmer.
+  
+- **Typer av Data Annotation:**
+  - **Bildannotering:** Märka objekt eller regioner i bilder (t.ex. identifiera bilar eller ansikten).
+  - **Textannotering:** Märkning av text med etiketter som känslor, nyckelord, eller namngivna enheter.
+  - **Ljudannotering:** Transkribering av ljud eller märkning av specifika ljud (t.ex. taligenkänning).
+  - **Videoannotering:** Märka objekt eller händelser som sker över tid i videor.
+
+- **Betydelse:** Kvaliteten på annoteringen påverkar direkt prestandan hos maskininlärningsmodeller, särskilt i övervakad inlärning.
+Imputation är en teknik inom datahantering som används för att fylla i saknade värden i en dataset. Saknade värden kan uppstå av olika skäl, som ofullständig datainsamling, och imputation är ett sätt att hantera detta problem utan att behöva ta bort datapunkter.
+
+
+I maskininlärning används heuristiker som tumregler eller enkla metoder för att lösa komplexa problem när det inte finns en direkt lösning eller när en optimal lösning skulle ta för lång tid att hitta. Heuristiker hjälper till att hitta tillräckligt bra lösningar snabbt genom att använda tidigare erfarenheter, intuition eller förenklade modeller.
+
+
+
+
+Matplotlib:
+ Använder Figuers and Axes.
+
+En Figure är själva hela ritytan eller fönstret där en eller flera grafer (plots) ritas. Det är den yttre behållaren för allt innehåll i en graf, som axlar, etiketter och själva plottarna.
+En figur kan innehålla flera Axes (dvs. flera undergrafer).
+
+En Axes är en specifik graf eller plot i en figur. Den innehåller x- och y-axlar, själva plottlinjerna, titlar och etiketter. Varje graf har sina egna Axes.
+En figur kan ha flera Axes, t.ex. om du skapar en grid med flera plottar i samma fönster.
+
+Hypothesis testing is a way of forming opinions or conclusions from the data we collect.
+
+The data is used to choose between two choices, aka hypothesis or statements. In practical terms, the reasoning is done by comparing what we have observed to what we expected.
+
+The available data will typically be a sample of the entire population.
+
+Här är en kort och enkel förklaring:
+
+Nollhypotes (H0): Ett antagande som säger att det inte finns någon skillnad mellan grupperna i din data.
+Alternativ hypotes (H1): Ett antagande som säger att det finns en skillnad mellan grupperna, vilket oftast är det du vill undersöka.
+Signifikansnivå (alpha):
+Signifikansnivå är hur stor risk du är villig att ta för att felaktigt förkasta nollhypotesen när den egentligen är sann.
+Vanligtvis sätts denna risk till 5% (0,05), vilket innebär att du är okej med en 5% chans att du begår ett fel när du säger att det finns en skillnad mellan grupper, trots att det inte gör det.
+I mer känsliga fall, som vid läkemedelsforskning, kan du välja en lägre risknivå (t.ex. 1%) för att vara ännu mer säker på dina slutsatser.
+Sammanfattning:
+H0: Inga skillnader mellan grupper.
+H1: Det finns skillnader mellan grupper.
+Signifikansnivå: Risken du är okej med att ta för att göra ett fel, ofta satt till 5%.
+
+Här är en kort och enkel förklaring av **p-värde**:
+
+- **P-värde**: Det är ett mått på hur troligt det är att nollhypotesen (H0) är sann.
+- Om **p-värdet är lågt**: Det betyder att det är **starkare bevis** för att nollhypotesen inte stämmer, och att det istället finns en skillnad mellan grupper (som alternativ hypotes säger).
+- Om **p-värdet är högt**: Då finns det **inte tillräckligt med bevis** för att förkasta nollhypotesen.
+
+### Hur används p-värdet:
+- Du jämför p-värdet med din **signifikansnivå (alpha)**, som ofta är satt till 5% (0,05).
+   - **Om p-värdet är mindre än alpha**: Du har tillräckligt med bevis för att **förkasta nollhypotesen**.
+   - **Om p-värdet är större än alpha**: Du har **inte tillräckligt med bevis** för att förkasta nollhypotesen.
+
+### Sammanfattning:
+- **Lågt p-värde (< alpha)**: Förkasta nollhypotesen, det finns en skillnad.
+- **Högt p-värde (> alpha)**: Behåll nollhypotesen, det finns inte tillräckligt med bevis för en skillnad.
+
+
+Här är en kort och enkel förklaring av **Shapiro-Wilk-testet**:
+
+- **Shapiro-Wilk-test**: Det används för att avgöra om en dataset är **normalt fördelad** (vilket betyder att data följer en klockformad kurva).
+  
+### Hypoteserna:
+- **Nollhypotes (H0)**: Datan **är normalt fördelad**.
+- **Alternativ hypotes (H1)**: Datan **är inte normalt fördelad**.
+
+### Hur tolkar du p-värdet:
+- **Om p-värdet är mindre än alpha** (ofta 0,05): Då finns det tillräckligt med bevis för att **förkasta nollhypotesen**, vilket betyder att **datan inte är normalt fördelad**.
+- **Om p-värdet är större än alpha**: Då finns det **inte tillräckligt med bevis** för att säga att datan inte är normalt fördelad, så vi antar att datan är normal.
+
+### Sammanfattning:
+- **Lågt p-värde (< 0,05)**: Datan **är inte normalt fördelad**.
+- **Högt p-värde (> 0,05)**: Datan **är normalt fördelad**.
+
+
+Chi-Squared Test (Goodness of Fit) används för att testa om det finns en signifikant skillnad mellan de förväntade och observerade frekvenserna i kategoriska variabler. Det hjälper dig att avgöra om den observerade fördelningen skiljer sig från vad du förväntar dig.
+
+T-test
+A t-test, also known as Student's t-test is a parametric test (the mean is the parameter) and can compute and test the difference between two sample means
+
+In other words, it tests if the difference in the means is 0
+Both samples should be normally distributed
+It is developed by William Gosset of Guinness's Brewery
+The samples should be independent (or unpaired).
+For example, imagine we are evaluating the effect of a new drug treatment, and we enrol 200 people, then randomise half in the treatment group and half in the control group. In this case, we have two independent groups
+The null hypothesis states that there are no significant levels of difference between the samples. The alternative hypothesis states that there are significant levels of difference between the samples.
+
+
+Mann-Whitney U-test (även kallat Wilcoxon rank-sum test) är ett icke-parametriskt test som används för att jämföra två oberoende grupper och avgöra om deras fördelningar skiljer sig åt.
+
+När används det?
+Används när data inte uppfyller kraven för normalfördelning, eller när du har ordinal data (rankade data).
+Det är ett alternativ till oberoende t-test när antagandet om normalfördelning inte är uppfyllt.
+
+**Wilcoxon-test** är ett icke-parametriskt test som används för att jämföra två **parade** eller **beroende** grupper när data **inte är normalfördelad**. Det är ett alternativ till det **parade t-testet**.
+
+### Två typer av Wilcoxon-test:
+
+1. **Wilcoxon Signed-Rank Test**:
+   - Används för att jämföra två **relaterade** eller **beroende** grupper, t.ex. mätningar före och efter en behandling.
+   - Testet mäter skillnaden mellan paren och avgör om medianen av skillnaderna är signifikant annorlunda från noll.
+
+   #### Hypoteser:
+   - **Nollhypotes (H0)**: Medianen av skillnaderna mellan paren är **noll** (ingen skillnad).
+   - **Alternativ hypotes (H1)**: Medianen av skillnaderna är **inte noll** (det finns en skillnad).
+
+2. **Wilcoxon Rank-Sum Test**:
+   - Används för att jämföra två **oberoende** grupper (samma som Mann-Whitney U-test).
+   - Jämför fördelningarna för två grupper för att se om de skiljer sig.
+
+### När används det?
+- När du har **parade data** eller **upprepade mätningar** och datan inte uppfyller kraven för normalfördelning.
+- T.ex. när du testar samma individer före och efter en behandling.
+
+### Tolkning:
+- Om **p-värdet** är mindre än signifikansnivån (t.ex. 0,05), kan du förkasta nollhypotesen och säga att det finns en **signifikant skillnad** mellan grupperna.
+- Om p-värdet är större än signifikansnivån, kan du inte förkasta nollhypotesen.
+
+### Sammanfattning:
+- **Wilcoxon Signed-Rank Test** används för att jämföra två beroende grupper (t.ex. före och efter mätningar).
+- Testet är ett icke-parametriskt alternativ till det parade t-testet när data inte är normalfördelad.
+
+**Kruskal-Wallis-testet** är ett icke-parametriskt test som används för att avgöra om det finns en **signifikant skillnad** mellan **tre eller fler oberoende grupper**. Det är ett alternativ till **ANOVA** när datan inte är normalfördelad eller när det finns ordnade data.
+
+### När används Kruskal-Wallis-testet?
+- När du har **tre eller fler grupper** och vill testa om deras **medelvärden eller medianer skiljer sig åt**.
+- Det är icke-parametriskt, vilket innebär att det **inte kräver att data är normalfördelad**.
+- Det används när grupperna är **oberoende** av varandra.
+
+### Hypoteser:
+1. **Nollhypotes (H0)**: Det finns **ingen skillnad** mellan gruppernas fördelningar.
+2. **Alternativ hypotes (H1)**: Det finns **minst en signifikant skillnad** mellan gruppernas fördelningar.
+
+### Hur fungerar det?
+- Testet baseras på att ranka alla datapunkter och sedan jämföra rankmedelvärden mellan grupperna.
+- Om grupperna har liknande rankmedelvärden, finns det ingen signifikant skillnad mellan dem.
+- Om grupperna har mycket olika rankmedelvärden, kan vi förkasta nollhypotesen och säga att det finns en signifikant skillnad.
+
+### Tolkning:
+- Om **p-värdet** är mindre än signifikansnivån (t.ex. 0,05), förkastar du nollhypotesen och säger att det finns **en skillnad mellan minst två grupper**.
+- Om p-värdet är större än signifikansnivån, kan du inte förkasta nollhypotesen och säger att det **inte finns några signifikanta skillnader** mellan grupperna.
+
+### Exempel:
+Om du testar tre olika dieter och vill se om viktminskningen skiljer sig mellan grupperna, men datan inte är normalfördelad, kan du använda Kruskal-Wallis-testet för att jämföra gruppernas viktförändring.
+
+### Sammanfattning:
+- **Kruskal-Wallis-testet** används för att testa om det finns en skillnad mellan **tre eller fler grupper** när datan inte är normalfördelad.
+- Det är ett icke-parametriskt alternativ till ANOVA.
+- Testet jämför rankmedelvärden mellan grupperna, och om skillnaden är signifikant, indikerar det att minst en grupp skiljer sig från de andra.
+
+
+Images
+
