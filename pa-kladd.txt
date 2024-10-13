@@ -601,3 +601,8 @@ Om du testar tre olika dieter och vill se om viktminskningen skiljer sig mellan 
 
 Images
 
+x_train: Innehåller träningsdata, som är bilder av handskrivna siffror.
+y_train: Innehåller etiketterna för träningsdatan, dvs. den faktiska siffran som varje bild representerar.
+x_test: Innehåller testdata, som också är bilder av handskrivna siffror men används för att utvärdera hur väl modellen presterar.
+y_test: Innehåller etiketterna för testdatan.
+
