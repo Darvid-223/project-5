@@ -606,3 +606,30 @@ y_train: Innehåller etiketterna för träningsdatan, dvs. den faktiska siffran 
 x_test: Innehåller testdata, som också är bilder av handskrivna siffror men används för att utvärdera hur väl modellen presterar.
 y_test: Innehåller etiketterna för testdatan.
 
+
+# Write your code here to get the text from wikipedia
+text = wikipedia.page('Björn Borg career statistics').content
+text
+
+# write your code here to do a word cloud
+wordcloud = WordCloud(width = 800, height = 400, 
+                      background_color='salmon', colormap='Pastel1',
+                      collocations = False, stopwords = STOPWORDS).generate(text)
+
+plot_wordcloud(wordcloud)
+
+Vad gör stopwords?
+    Tar bort ord som "the", "if" etc.
+    
+Vad är collocations?
+    Collocations är vanliga ordkombinationer som ofta förekommer tillsammans i en text. Exempel på collocations är:
+
+    "New York"
+    "machine learning"
+    "deep learning"
+    Dessa ordkombinationer är ord som ofta används tillsammans och kan ha en speciell betydelse när de behandlas som en helhet snarare än separata ord.
+
+    Vad gör collocations=False?
+    När collocations=False sätts, betyder det att ordkombinationer inte tillåts i 
+    ordmolnet. I praktiken behandlas orden individuellt, och inga kombinationer av ord (som "New York") 
+    kommer att visas som en enhetlig fras. Istället kommer varje ord att visas separat ("New" och "York" som två separata ord i molnet).
