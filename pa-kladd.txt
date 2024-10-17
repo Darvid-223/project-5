@@ -620,7 +620,7 @@ plot_wordcloud(wordcloud)
 
 Vad gör stopwords?
     Tar bort ord som "the", "if" etc.
-    
+
 Vad är collocations?
     Collocations är vanliga ordkombinationer som ofta förekommer tillsammans i en text. Exempel på collocations är:
 
@@ -633,3 +633,64 @@ Vad är collocations?
     När collocations=False sätts, betyder det att ordkombinationer inte tillåts i 
     ordmolnet. I praktiken behandlas orden individuellt, och inga kombinationer av ord (som "New York") 
     kommer att visas som en enhetlig fras. Istället kommer varje ord att visas separat ("New" och "York" som två separata ord i molnet).
+
+sns.set_style("whitegrid")
+num_top_words= 10 
+txt_ser = pd.Series(text) # gör om texten till panda series
+plt.figure(figsize=(15,5))  # figuerns storlek i inch
+hero.top_words(txt_ser)[:num_top_words].plot(kind='bar')
+plt.show()
+
+def remove_specific_characters(txt):
+  for x in ['\n','/><br','<br', 'br', '/><br', '/>']:
+    txt = txt.replace(x, ' ')
+  return txt
+
+
+
+  pipeline = Pipeline([
+      ( 'median',  MeanMedianImputer(imputation_method='median',
+                                     variables=['bill_length_mm' , 'bill_depth_mm',
+                                                'flipper_length_mm', 'body_mass_g']) )
+])
+pipeline
+
+Kommandot `pipeline.fit(df)` används för att träna pipelinen med en datamängd (`df`). Låt oss bryta ner vad som händer:
+
+### Vad gör `fit`-metoden?
+- **Träna transformationsstegen**: `pipeline.fit(df)` går igenom alla transformationssteg som är definierade i pipelinen och anpassar dem till den datamängd som ges, här kallad `df`. Detta innebär att pipelinen lär sig den information som behövs för att senare kunna tillämpa dessa transformationer på datan.
+
+För pipelinen som du definierade ovan, där vi har steget `MeanMedianImputer` med `imputation_method='median'`:
+- **Beräkning av medianen**: `fit`-metoden gör att `MeanMedianImputer` räknar ut medianen för de specifika variablerna (`bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g`) i datamängden `df`. Dessa medianvärden lagras sedan internt i pipelinen.
+
+### Vad betyder detta för din data?
+- Efter att ha använt `pipeline.fit(df)` så är pipelinen tränad med medianerna för de specificerade kolumnerna.
+- Denna tränade pipeline kan nu användas för att imputerera saknade värden i både den nuvarande datamängden och i andra datamängder som har samma struktur. Detta sker med metoden `.transform()` eller `.fit_transform()`. 
+
+### Steg som ofta följer `fit()`
+Efter `pipeline.fit(df)` gör man vanligtvis något av följande:
+1. **Transformera datan**:
+   - Du kan använda `pipeline.transform(df)` för att applicera den tränade transformationen (t.ex. medianimputering) på datamängden `df`. Detta innebär att saknade värden kommer att ersättas med de beräknade medianerna från `fit()`-steget.
+   
+   ```python
+   df_transformed = pipeline.transform(df)
+   ```
+
+2. **Kombinera fit och transform**:
+   - Istället för att köra `fit()` och `transform()` separat kan du använda `pipeline.fit_transform(df)`. Detta gör båda stegen i en och samma operation:
+   
+   ```python
+   df_transformed = pipeline.fit_transform(df)
+   ```
+   - Detta är praktiskt när du vill både träna och direkt tillämpa transformationerna på datan.
+
+### Exempel på användning:
+```python
+# Tränar pipelinen med datan (beräknar medianer för angivna variabler)
+pipeline.fit(df)
+
+# Applicerar transformationen på datan (ersätter saknade värden med medianen)
+df_transformed = pipeline.transform(df)
+```
+
+Efter att ha använt `fit()`-metoden är din pipeline redo att bearbeta datan. Om du har en ny datamängd med samma kolumner, kan du direkt använda `transform()` för att hantera eventuella saknade värden baserat på medianerna från din ursprungliga datamängd (`df`).
