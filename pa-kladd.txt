@@ -694,3 +694,127 @@ df_transformed = pipeline.transform(df)
 ```
 
 Efter att ha använt `fit()`-metoden är din pipeline redo att bearbeta datan. Om du har en ny datamängd med samma kolumner, kan du direkt använda `transform()` för att hantera eventuella saknade värden baserat på medianerna från din ursprungliga datamängd (`df`).
+
+
+
+--- pipeline
+
+En `Pipeline` i `scikit-learn` är ett praktiskt verktyg för att skapa en sekvens av steg som bearbetar data och tränar en maskininlärningsmodell. Det hjälper till att automatisera processen och hålla koden ren och organiserad.
+
+### Varför använda en Pipeline?
+En `Pipeline` gör det möjligt att koppla samman flera steg, till exempel datatransformationer och modellträning, till en sammanhängande process. Detta gör hela bearbetningen enkel och minskar risken för fel genom att automatiskt utföra alla steg i rätt ordning.
+
+### Hur fungerar en Pipeline?
+En `Pipeline` består av en lista med steg som anges i form av en sekvens av `(namn, transformer/modell)`-par.
+
+Till exempel:
+
+```python
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),  # Först standardiseras datan
+    ('model', LogisticRegression())  # Sedan tränas modellen
+])
+```
+
+I det här exemplet består pipelinen av två steg:
+1. **StandardScaler**: Detta transformeringssteg standardiserar data så att den har medelvärde 0 och standardavvikelse 1.
+2. **LogisticRegression**: Därefter tränas en logistisk regressionsmodell på den transformerade datan.
+
+### Steg att använda en Pipeline
+1. **`fit(X, y)`**:
+   - Den tränar pipelinen med datasetet `X` och målvariabeln `y`.
+   - Alla transformeringssteg (`fit()`) utförs på data och modellen tränas.
+
+2. **`transform(X)`**:
+   - Applicerar transformationerna från pipelinen på datasetet `X`. Används när man bara vill transformera data utan att träna modellen.
+   
+3. **`fit_transform(X, y)`**:
+   - Tränar transformationerna och applicerar dem direkt på data.
+
+4. **`predict(X)`**:
+   - Efter att modellen har tränats, kan du använda `predict(X)` för att göra förutsägelser på ny data.
+
+### Exempel på användning:
+```python
+pipeline.fit(X_train, y_train)  # Tränar pipelinen: först skalas X_train, sedan tränas modellen
+y_pred = pipeline.predict(X_test)  # Gör förutsägelser på ny data efter att ha transformerat X_test
+```
+
+### Fördelar med att använda en Pipeline:
+1. **Rätt ordning**: Alla steg i bearbetningen utförs automatiskt i rätt ordning.
+2. **Konsistent träning och test**: När pipelinen används på både tränings- och testdatan säkerställer den att exakt samma transformationer utförs, vilket minskar risken för fel.
+3. **Ren och läsbar kod**: Håller koden organiserad och gör bearbetningsstegen mer överskådliga.
+
+Sammanfattningsvis är `Pipeline` ett kraftfullt verktyg som automatiserar hela bearbetningskedjan, från datatransformationer till modellträning och förutsägelser, vilket gör det lättare att arbeta med data och maskininlärningsmodeller.
+
+
+---------------
+
+Den här koden använder `scikit-learn` och andra bibliotek för att skapa en **pipeline** som hanterar data i två steg: **borttagning av saknade värden** och **One Hot Encoding** av kategoriska variabler. Vi ska titta på hur varje steg fungerar och vad som händer i pipelinen.
+
+### Vad är en Pipeline?
+En **pipeline** i `scikit-learn` är ett sätt att skapa en sekvens av transformationssteg som kan appliceras på data. Istället för att manuellt göra varje steg för sig, kan man koppla ihop stegen till en pipeline som hanterar hela processen automatiskt. I detta exempel används två steg: 
+1. Ta bort rader med saknade värden.
+2. Göra One Hot Encoding på kategoriska variabler.
+
+### Komponenter i pipelinen
+
+1. **`DropMissingData` från `feature_engine.imputation`**:
+   - **Steg 1**: `('drop_na', DropMissingData())` är det första steget i pipelinen.
+   - Denna transformerare **tar bort alla rader som har saknade värden** (NaN). Detta är viktigt eftersom du inte kan göra One Hot Encoding om en kategorisk variabel har saknade värden.
+   - Den här processen gör att vi endast behåller rader där alla värden finns närvarande.
+
+2. **`OneHotEncoder`**:
+   - **Steg 2**: `('ohe', OneHotEncoder(variables=['species', 'island', 'sex']))`.
+   - `OneHotEncoder` används här för att **konvertera kategoriska variabler** (`'species'`, `'island'`, `'sex'`) till flera binära kolumner (0 och 1).
+   - Varje kategori i variabeln blir en egen kolumn. Till exempel om `'species'` har tre kategorier (A, B, C), så kommer varje kategori att omvandlas till egna kolumner (`species_A`, `species_B`, `species_C`).
+
+### `.fit_transform(df)`
+- **`fit_transform(df)`** används för att både "lära in" parametrarna och applicera dessa på datan.
+- **`fit()`** lär sig nödvändiga parametrar från `df`, i detta fall betyder det att:
+  - `DropMissingData` lär sig vilka rader som ska tas bort baserat på om de innehåller saknade värden.
+  - `OneHotEncoder` lär sig vilka kategoriska värden som finns i varje kolumn och förbereder sig för att skapa nya kolumner för varje unikt värde.
+- **`transform()`** betyder att dessa parametrar sedan appliceras på `df`. Det innebär:
+  - Att de saknade raderna tas bort.
+  - Att de kategoriska variablerna kodas om till binära variabler.
+
+### Exempel på vad som händer med data
+Låt oss säga att `df` har följande struktur:
+```plaintext
+| species | island | sex   | other_column |
+|---------|--------|-------|--------------|
+| A       | X      | male  | 1            |
+| B       | Y      | female| 2            |
+| C       | NaN    | male  | 3            |
+| NaN     | Z      | female| 4            |
+```
+
+- **Efter `DropMissingData`**: Alla rader som har `NaN` i någon kolumn tas bort. Här skulle de sista två raderna tas bort eftersom de innehåller saknade värden (`NaN`).
+  
+  Resultatet blir:
+  ```plaintext
+  | species | island | sex   | other_column |
+  |---------|--------|-------|--------------|
+  | A       | X      | male  | 1            |
+  | B       | Y      | female| 2            |
+  ```
+
+- **Efter `OneHotEncoder`**: `species`, `island`, och `sex` omvandlas till binära kolumner:
+  ```plaintext
+  | species_A | species_B | island_X | island_Y | sex_male | sex_female | other_column |
+  |-----------|-----------|----------|----------|----------|------------|--------------|
+  | 1         | 0         | 1        | 0        | 1        | 0          | 1            |
+  | 0         | 1         | 0        | 1        | 0        | 1          | 2            |
+  ```
+
+### Sammanfattning
+1. **Pipeline** är ett sätt att kedja ihop databehandlingar i en specifik ordning.
+2. **`DropMissingData`** tar bort alla rader med saknade värden, så att det går att köra One Hot Encoding utan problem.
+3. **`OneHotEncoder`** omvandlar kategoriska variabler till binära variabler, vilket gör det lättare för maskininlärningsmodeller att använda datan.
+4. **`fit_transform(df)`** lär pipelinen och applicerar stegen direkt på datan.
+
+Efter denna process har du ett dataramverk som är redo att användas i maskininlärning eller annan analys, utan saknade värden och med kategoriska variabler som omvandlats till numeriska format.
